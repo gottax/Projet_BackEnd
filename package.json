@@ -1,0 +1,24 @@
+{
+  "name": "my-project",
+    "version": "1.0.0",
+    "description": "A sample project using Sequelize",
+    "dependencies": {
+      "sequelize": "^7.0.0",
+      "pg": "^8.5.0",
+      "pg-hstore": "^2.3.3"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.4"
+    },
+    "scripts": {
+      "start": "nodemon index.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+      "sequelize",
+      "sql",
+      "postgres"
+    ],
+    "author": "Your Name",
+    "license": "ISC"
+  }
