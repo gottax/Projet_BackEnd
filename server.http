@@ -10,10 +10,10 @@ Content - Type: application / xml
 
     < users >
   <user>
-    <email>karl@test.com</email>
-    <password>12345</password>
+    <email>gauthier.tsn@gmail.com</email>
+    <password>zozo92</password>
   </user>
-  <user email="karl@test.com" password="12345"/>
+  <user email="gauthier.tsn@gmail.com" password="zozo92"/>
 </users >
 ###
 POST http://localhost:3000/users
