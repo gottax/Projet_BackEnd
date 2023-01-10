@@ -1,21 +1,29 @@
-const express = require("express");
-const checkRequestFormat = require("./middlewares/checkRequestFormat");
-const errorHandler = require("./middlewares/errorHandler");
-const userRouter = require("./routes/users");
-const securityRouter = require("./routes/security");
-require("./models/db");
+const jwt = require('jsonwebtoken');
+const ROLES = require('./roles');
 
-const app = express();
+const checkRole = (requiredRole) => {
+  return (req, res, next) => {
+    const token = req.headers.authorization;
+    if (!token) {
+      return res.status(401).json({ error: 'No token provided' });
+    }
 
-app.use(checkRequestFormat);
-app.use(express.json());
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        return res.status(401).json({ error: 'Invalid token' });
+      }
 
-app.use(securityRouter);
-app.use(userRouter);
+      if (decoded.role < requiredRole) {
+        return res.status(403).json({ error: 'Insufficient role' });
+      }
 
-app.use(errorHandler);
+      req.user = decoded;
+      next();
+    });
+  };
+};
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log("Server is listening on port " + PORT);
-});
+module.exports = {
+  checkRole,
+  ROLES,
+};
