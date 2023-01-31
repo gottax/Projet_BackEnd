@@ -1,18 +1,77 @@
-const { Post, User } = require("./models");
-const route = new Router(); 
+const { Router } = require("express");
+const router = new Router();
+const { findAll, findByPk, create } = require("../Models/Comments");
+const {Comments}=require("../Models");
 
 
-route.get(route_path, async (req, res) => {
-    
-   
-    const users_Count = await User.count();
-    const Comment_Count = await Comment.count();
-
-  
-    res.send(
-        "Notre plateforme possède" + Comment_Count + "commentaire sur la plateforme! <br>" +
-        "Ainsi que " + users_Count + " comptes enregistré(s)"
-    );
+router.get("/Comments", async (req, res) => {
+try {
+const comments = await Comments.findAll();
+res.json(comments);
+} catch (error) {
+res.status(500).json({ error: "Internal server error" });
+}
 });
 
-module.exports = router;
+
+router.get("/Comments/:id", async (req, res) => {
+try {
+const comment = await findByPk(req.params.id);
+if (!comment) {
+return res.status(404).json({ error: "Comment not found" });
+}
+res.json(comment);
+} catch (error) {
+res.status(500).json({ error: "Internal server error" });
+}
+});
+
+
+router.post("/Comments", async (req, res) => {
+try {
+const comment = await create({
+content: req.body.content,
+post_id: req.body.post_id,
+user_id: req.body.user_id,
+});
+res.status(201).json(comment);
+} catch (error) {
+res.status(500).json({ error: "Internal server error" });
+}
+});
+
+router.put("/Comments/:id", async (req, res) => {
+    try {
+    const comment = await findByPk(req.params.id);
+    if (!comment) {
+    return res.status(404).json({ error: "Comment not found" });
+    }
+    comment.content = req.body.content;
+    comment.post_id = req.body.post_id;
+    comment.user_id = req.body.user_id;
+    await comment.save();
+    res.json(comment);
+    } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+    }
+    });
+
+router.delete("/Comments/:id", async (req, res) => {
+    try {
+    const comment = await findByPk(req.params.id);
+    if (!comment) {
+    return res.status(404).json({ error: "Comment not found" });
+    }
+    await comment.destroy();
+    res.json({ message: "Comment deleted successfully" });
+    } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+    }
+    });
+    
+    module.exports = router;
+    
+    
+    
+    
+    

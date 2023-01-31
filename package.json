@@ -1,24 +1,34 @@
 {
-  "name": "my-project",
-    "version": "1.0.0",
-    "description": "A sample project using Sequelize",
-    "dependencies": {
-      "sequelize": "^7.0.0",
-      "pg": "^8.5.0",
-      "pg-hstore": "^2.3.3"
-    },
-    "devDependencies": {
-      "nodemon": "^2.0.4"
-    },
-    "scripts": {
-      "start": "nodemon index.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-      "sequelize",
-      "sql",
-      "postgres"
-    ],
-    "author": "Your Name",
-    "license": "ISC"
-  }
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Project server",
+  "main": "index.js",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "migrate": "node migrate.js"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^2.3.3",
+    "package-lock.json": "^1.0.0",
+    "package.json": "^0.0.0",
+    "sequelize": "^6.26.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gottax/Projet_BackEnd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gottax/Projet_BackEnd/issues"
+  },
+  "homepage": "https://github.com/gottax/Projet_BackEnd#readme"
+}

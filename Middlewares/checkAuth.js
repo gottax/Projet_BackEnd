@@ -1,29 +1,29 @@
-const jwt = require('jsonwebtoken');
-const ROLES = require('./roles');
 
-const checkRole = (requiredRole) => {
-  return (req, res, next) => {
-    const token = req.headers.authorization;
-    if (!token) {
-      return res.status(401).json({ error: 'No token provided' });
-    }
+const jwt = require("jsonwebtoken");
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-      if (err) {
-        return res.status(401).json({ error: 'Invalid token' });
-      }
+const SECRET = process.env.JWT_SECRET || "SECRET_password";
 
-      if (decoded.role < requiredRole) {
-        return res.status(403).json({ error: 'Insufficient role' });
-      }
+module.exports = function(options = {}){
+    return function(req, res, next){
+        const Authorization = req.headers["authorization"];
+        if(!Authorization && options.anonymous){
+            return next();
+        }
+        if(!Authorization){
+            return res.sendStatus(401);
+        }
 
-      req.user = decoded;
-      next();
-    });
-  };
-};
+        const [type, token] = Authorization.split(" ");
 
-module.exports = {
-  checkRole,
-  ROLES,
+        if (type !== "Bearer"){
+            return res.sendStatus(401);
+        }
+        try {
+            req.user = jwt.verify(token, SECRET);
+            next();
+        }catch(error){
+            console.log(error);
+            res.sendStatus(401);
+        }
+    };
 };

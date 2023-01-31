@@ -1,11 +1,15 @@
 const { Model, DataTypes } = require("sequelize");
-const connection = require("./db");
+const connection = require("./Database");
 const bcrypt = require("bcryptjs");
-
+const Comment = require("./Comments");
+const Post = require("./Posts");
 class User extends Model {}
+
+const table_name = "user";
 
 User.init(
   {
+    
     username: {
         type: DataTypes.STRING,
         unique: true
@@ -27,6 +31,7 @@ User.init(
       type: DataTypes.ENUM('USER', 'ADMIN'),
       defaultValue: 'USER'
     },
+  phone_number: DataTypes.STRING,
   },
   {
     sequelize: connection,

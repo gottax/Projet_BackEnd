@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { User } = require("./models");
+const { User } = require("./Models");
 const jwt = require("jsonwebtoken");
 
 
@@ -17,11 +17,8 @@ const generateJWT = (userId) => {
 
 } 
 
-  return jwt.sign({ userId }, secret, { expiresIn: expiration }); 
-
-} 
-
-// Middleware to check for valid JWT in the authorization header 
+  return jwt.sign({ User }, secret, { expiresIn: expiration }); 
+ 
 
 const checkJwt = (req, res, next) => { 
 
@@ -61,7 +58,7 @@ const checkJwt = (req, res, next) => {
 
 
 
-router.get('/user/:id/posts', checkJwt, (req, res) => { 
+Router.get('/user/:id/posts', checkJwt, (req, res) => { 
 
   if(req.userId !== parseInt(req.params.id)) { 
 

@@ -1,46 +1,165 @@
-### 
-GET http://localhost:3000/users
-# User 22 ADMIN
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYXN0bmFtZSI6ImFoYWgiLCJmaXJzdG5hbWUiOiJjb3Vjb3UiLCJyb2xlIjoiQURNSU4iLCJpZCI6MjIsImlhdCI6MTY3MDIyNzM2OX0.QlFqZ9RwG4NdwzTUx6WGXVuMXpLJ4Blyvhbq4K4lKYo
-# User USER
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYXN0bmFtZSI6bnVsbCwiZmlyc3RuYW1lIjpudWxsLCJyb2xlIjoiVVNFUiIsImlkIjozMCwiaWF0IjoxNjcwMjI4MzQwfQ.KuuTgKvdAKtrjJByCC0Xw - rcUnZ8UYsWeSaf4XSoXkc
+// BASE //
 ###
-POST http://localhost:3000/users
-Content - Type: application / xml
+GET http://localhost:3000/
 
-    < users >
-  <user>
-    <email>gauthier.tsn@gmail.com</email>
-    <password>zozo92</password>
-  </user>
-  <user email="gauthier.tsn@gmail.com" password="zozo92"/>
-</users >
+
+
+// USER PART //
+
+// GET METHOD(S)
 ###
-POST http://localhost:3000/users
-Content - Type: application / json
+GET http://localhost:3000/User/1
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+###
+GET http://localhost:3000/Comments
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+###
+// POST METHOD(S)
+POST http://localhost:3000/User
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+Content-Type: application/json
 
 {
-    "email": "gauthier.tsn@gmail.com",
-        "password": "zozo92"
+  "username": "User",
+   "password": "user_pass",
+  "email": "mail@gmail.com",
+  "phone_number": "3333333333"
 }
-### 
-GET http://localhost:3000/users/1
 ###
-PUT http://localhost:3000/users/22
-Content - Type: application / json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsYXN0bmFtZSI6ImFoYWgiLCJmaXJzdG5hbWUiOiJjb3Vjb3UiLCJyb2xlIjoiQURNSU4iLCJpZCI6MjIsImlhdCI6MTY3MDIyNzM2OX0.QlFqZ9RwG4NdwzTUx6WGXVuMXpLJ4Blyvhbq4K4lKYo
+POST http://localhost:3000/Login
+Content-Type: application/json
 
 {
-    "role": "ADMIN"
+  "email": "mail@gmail.com",
+  "password": "user_pass"
 }
-### 
-DELETE http://localhost:3000/users/1
-
 ###
-POST http://localhost:3000/login
-Content - Type: application / json
+// PUT METHOD(S)
+PUT http://localhost:3000/User/19
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+Content-Type: application/json
 
 {
-    "email": "gauthier.tsn@gmail.com",
-        "password": "zozo92"
+  "phone_number": "3333333333"
 }
+###
+// DELETE METHOD(S)
+DELETE http://localhost:3000/User/19
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+###
+
+
+
+// COMMENTS PART //
+
+// GET METHOD(S)
+###
+GET http://localhost:3000/Comments
+###
+GET http://localhost:3000/Comments/1
+###
+GET http://localhost:3000/Comments
+
+// POST METHOD(S)
+###
+POST http://localhost:3000/Comments
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+Content-Type: application/json
+
+{
+  "name":"Fifa 21"
+  "user_id": "3",
+  "content": "I totally agree with you about FIFA 21, the graphics are really impressive.",
+}
+###
+// PUT METHOD(S)
+###
+PUT http://localhost:3000/Comments/9
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+Content-Type: application/json
+
+{
+  "name": "Fifa 21",
+  "content": "I totally agree with you about FIFA 21, the graphics are really impressive. but he can be better"
+}
+###
+// DELETE METHOD(S)
+###
+DELETE http://localhost:3000/Comments/5
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+
+
+
+
+// GAMES PART //
+
+// GET METHOD(S)
+###
+GET http://localhost:3000/Games
+###
+GET http://localhost:3000/Games/1
+###
+GET http://localhost:3000/Games
+
+// POST METHOD(S)
+###
+POST http://localhost:3000/Games
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+Content-Type: application/json
+
+{
+  "name": "FIFA 21",
+  "release_date":"2020-10-09"
+  "platform_ENUM":"PC"
+  "genre_ENUM":"Sports"
+}
+###
+// PUT METHOD(S)
+###
+PUT http://localhost:3000/Games/8
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+Content-Type: application/json
+
+###
+// DELETE METHOD(S)
+###
+DELETE http://localhost:3000/Games/8
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+
+
+// Posts PART //
+
+
+// GET METHOD(S)
+###
+GET http://localhost:3000/Posts
+###
+GET http://localhost:3000/Posts/1
+###
+GET http://localhost:3000/Posts
+
+// POST METHOD(S)
+###
+POST http://localhost:3000/Posts
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+Content-Type: application/json
+
+{
+  "title":"My experience playing FIFA 21"
+  "name": "golly",
+  "Content": "I've been playing FIFA 21 for a few weeks now and I'm really enjoying it. The graphics are great and the gameplay is smooth. Highly recommended!",
+  "user_id": 2,
+  
+}
+###
+// PUT METHOD(S)
+###
+PUT http://localhost:3000/Posts/8
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
+Content-Type: application/json
+
+###
+// DELETE METHOD(S)
+###
+DELETE http://localhost:3000/Posts/8
+Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.tyh-VfuzIxCyGYDlkBA7DfyjrqmSHu6pQ2hoZuFqUSLPNY2N0mpHb3nk5K17HWP_3cYHBw7AhHale5wky6-sVA
